@@ -9,6 +9,7 @@ public class Walk : MonoBehaviour {
 	private Rigidbody2D myBody;
 	private Animator anim;
 
+	public float bounceJump=500f;
 	private bool grounded=true;
 
 	// Use this for initialization
@@ -82,6 +83,11 @@ public class Walk : MonoBehaviour {
 	
 		if (target.gameObject.tag=="Ground") {
 			grounded = true;
+		}
+
+		if (target.gameObject.tag=="Bouncer") {
+			
+			myBody.AddForce (new Vector2(0f,bounceJump));
 		}
 	}
 
