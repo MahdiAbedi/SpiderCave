@@ -35,7 +35,7 @@ public class Door : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D target){
 		if (target.tag=="Player") {
-			Debug.Log ("Game Finnished");
+			GameObject.Find("GameController").GetComponent<GameController> ().PlayerDied ();
 		}
 	}
 	public void DecreaseCollectablesCount(){

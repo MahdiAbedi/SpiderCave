@@ -34,6 +34,7 @@ public class JummperSpider : MonoBehaviour {
 
 		if (target.gameObject.tag=="Player") {
 			Destroy (target.gameObject);
+			GameObject.Find("GameController").GetComponent<GameController> ().PlayerDied ();
 		}
 	}
 }

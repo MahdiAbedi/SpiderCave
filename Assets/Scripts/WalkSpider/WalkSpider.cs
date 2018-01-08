@@ -28,6 +28,7 @@ public class WalkSpider : MonoBehaviour {
 		isCollisitionWithGround = Physics2D.Linecast (startPos.position,endPos.position,1<<LayerMask.NameToLayer("Ground"));
 
 		Debug.DrawLine (startPos.position,endPos.position,Color.green);
+
 		if (!isCollisitionWithGround) {
 			Vector3 temp = transform.localScale;
 			temp.x *= -1;
@@ -37,5 +38,12 @@ public class WalkSpider : MonoBehaviour {
 
 	void Move(){
 		myBody.velocity = new Vector2 (transform.localScale.x,0) * speed;
+	}
+
+	void OnCollisionEnter2D(Collision2D target){
+		if (target.gameObject.tag=="Player") {
+			Destroy (target.gameObject);
+			GameObject.Find("GameController").GetComponent<GameController> ().PlayerDied ();
+		}
 	}
 }

@@ -89,6 +89,18 @@ public class Walk : MonoBehaviour {
 			
 			myBody.AddForce (new Vector2(0f,bounceJump));
 		}
+
+		if (target.gameObject.tag=="AirPoint") {
+
+			GameObject.Find ("GameController").GetComponent<AirController> ().air += 15;
+			Destroy (target.gameObject);
+		}
+
+		if (target.gameObject.tag=="TimePoint") {
+
+			GameObject.Find ("GameController").GetComponent<TimeController> ().time += 15;
+			Destroy (target.gameObject);
+		}
 	}
 
 }//end of class
